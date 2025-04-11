@@ -1,15 +1,15 @@
 # HANet
 
-[HANet: A Hierarchical Attention Network for Change Detection With Bitemporal Very-High-Resolution Remote Sensing Images](https://ieeexplore.ieee.org/abstract/document/10093022)
+[HANet: 一种用于双时相超高分辨率遥感图像变化检测的层次注意力网络](https://ieeexplore.ieee.org/abstract/document/10093022)
 
-## Introduction
+## 简介
 
-[Official Repo](https://github.com/ChengxiHAN/HANet-CD)
+[官方仓库](https://github.com/ChengxiHAN/HANet-CD)
 
-[Code Snippet](https://github.com/likyoo/open-cd/blob/main/opencd/models/backbones/hanet.py)
+[代码片段](https://github.com/likyoo/open-cd/blob/main/opencd/models/backbones/hanet.py)
 
-## Abstract
-Benefiting from the developments in deep learning technology, deep-learning-based algorithms employing automatic feature extraction have achieved remarkable performance on the change detection (CD) task. However, the performance of existing deep-learning-based CD methods is hindered by the imbalance between changed and unchanged pixels. To tackle this problem, a progressive foreground-balanced sampling strategy on the basis of not adding change information is proposed in this article to help the model accurately learn the features of the changed pixels during the early training process and thereby improve detection performance. Furthermore, we design a discriminative Siamese network, hierarchical attention network (HANet), which can integrate multiscale features and refine detailed features. The main part of HANet is the HAN module, which is a lightweight and effective self-attention mechanism. Extensive experiments and ablation studies on two CD datasets with extremely unbalanced labels validate the effectiveness and efficiency of the proposed method.
+## 摘要
+得益于深度学习技术的发展，采用自动特征提取的基于深度学习的算法在变化检测（CD）任务上取得了显著的性能。然而，现有基于深度学习的CD方法的性能受到变化和未变化像素之间不平衡的阻碍。为了解决这个问题，本文在不添加变化信息的基础上提出了一种渐进式前景平衡采样策略，帮助模型在早期训练过程中准确学习变化像素的特征，从而提高检测性能。此外，我们设计了一种判别性孪生网络，层次注意力网络（HANet），它可以集成多尺度特征并细化详细特征。HANet的主要部分是HAN模块，它是一种轻量级且有效的自注意力机制。在两个具有极度不平衡标签的CD数据集上进行的广泛实验和消融研究验证了所提出方法的有效性和效率。
 
 <!-- [IMAGE] -->
 
@@ -30,15 +30,15 @@ Benefiting from the developments in deep learning technology, deep-learning-base
 
 ```
 
-## Results and models
+## 结果和模型
 
 ### LEVIR-CD
 
-| Method | PFBS | Crop Size | Lr schd | Mem (GB) | Precision | Recall | F1-Score |  IoU  |                            config                            | download |
+| 方法 | PFBS | 裁剪尺寸 | 学习率调度 | 内存 (GB) | 精确率 | 召回率 | F1分数 |  IoU  |                            配置                            | 下载 |
 | :----: | :--: | :-------: | :-----: | :------: | :-------: | :----: | :------: | :---: | :----------------------------------------------------------: | :------: |
-| HANet  | w/o  |  256x256  |  40000  |    -     |   91.73   | 90.06  |  90.89   | 83.29 | [config](https://github.com/likyoo/open-cd/blob/main/configs/hanet/hanet_256x256_40k_levircd.py) |          |
+| HANet  | 不使用  |  256x256  |  40000  |    -     |   91.73   | 90.06  |  90.89   | 83.29 | [配置](https://github.com/likyoo/open-cd/blob/main/configs/hanet/hanet_256x256_40k_levircd.py) |          |
 
 
-- All metrics are based on the category "change".
-- All scores are computed on the test set.
-- `PFBS` indicates Progressive Foreground-Balanced Sampling.
+- 所有指标均基于"变化"类别。
+- 所有得分均在测试集上计算。
+- `PFBS`表示渐进式前景平衡采样。

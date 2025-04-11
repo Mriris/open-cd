@@ -10,34 +10,33 @@
 <a href="https://huggingface.co/likyoo/Open-CD_Model_Zoo"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fhuggingface.co%2Flikyoo%2FOpen-CD_Model_Zoo&count_bg=%23684BD3&title_bg=%23555555&icon=&icon_color=%23E7E7E7&title=%F0%9F%A4%97%20Hugging%20Face&edge_flat=false"/></a>
 </div>
 
-## Introduction
-Open-CD is an open source change detection toolbox based on a series of open source general vision task tools.
+## 简介
+Open-CD是一个基于一系列开源通用视觉任务工具的开源变化检测工具箱。
 
+## 新闻
+- 2025/4/11 - 支持[MTKD](https://github.com/circleLZY/MTKD-CD)方法和[JL1-CD](https://github.com/circleLZY/MTKD-CD)数据集。Open-CD技术报告更新至v1.1版本。
+- 2024/7/23 - **Open-CD技术报告v1.0已在[arXiv](https://arxiv.org/abs/2407.15317)发布，感谢所有贡献者！欢迎加入我们！** 💥💥💥
+- 2024/6/29 - 支持[ChangeStar](https://github.com/Z-Zheng/ChangeStar)和[FarSeg](https://github.com/Z-Zheng/FarSeg)。
+- 2024/6/20 - 我们启动**[Open-CD技术报告计划](https://github.com/likyoo/open-cd/tree/main/projects/open-cd_technical_report)**，欢迎加入我们！！！ 💥💥💥
+- 2024/6/17 - 支持[CGNet](https://github.com/ChengxiHAN/CGNet-CD)。
+- 2024/2/10 - Open-CD升级到v1.1.0版本。支持[BAN](https://github.com/likyoo/BAN)、[TTP](https://github.com/KyanChen/TTP)和[LightCDNet](https://github.com/NightSongs/LightCDNet)。添加了推理API。
+- 2023/4/21 - Open-CD v1.0.0在1.x分支发布，基于OpenMMLab 2.0！同时支持PyTorch 2.0！
+- 2023/3/14 - Open-CD升级到v0.0.3版本。支持语义变化检测（SCD）！
+- 2022/11/17 - Open-CD升级到v0.0.2版本，需要更高版本的MMSegmentation依赖。
+- 2022/9/28 - [ChangerEx](https://github.com/likyoo/open-cd/tree/main/configs/changer)的代码、预训练模型和日志可用。:yum:
+- 2022/9/20 - 我们的论文[Changer: Feature Interaction is What You Need for Change Detection](https://arxiv.org/abs/2209.08290)已发布！
+- 2022/7/30 - Open-CD正式公开发布！
 
-## News
-- 4/11/2025 - [MTKD](https://github.com/circleLZY/MTKD-CD) method and [JL1-CD](https://github.com/circleLZY/MTKD-CD) dataset are supported. Open-CD Technical Report is updated to v1.1.
-- 7/23/2024 - **Open-CD Technical Report v1.0 is released on [arXiv](https://arxiv.org/abs/2407.15317), thanks to all contributors! Feel free to join us!** 💥💥💥
-- 6/29/2024 - [ChangeStar](https://github.com/Z-Zheng/ChangeStar) and [FarSeg](https://github.com/Z-Zheng/FarSeg) are supported.
-- 6/20/2024 - We launch the **[Open-CD Technical Report Plan](https://github.com/likyoo/open-cd/tree/main/projects/open-cd_technical_report)**, don't hesitate to join us!!! 💥💥💥
-- 6/17/2024 - [CGNet](https://github.com/ChengxiHAN/CGNet-CD) is supported.
-- 2/10/2024 - Open-CD is upgraded to v1.1.0. [BAN](https://github.com/likyoo/BAN), [TTP](https://github.com/KyanChen/TTP) and [LightCDNet](https://github.com/NightSongs/LightCDNet) is supported. The inference API is added.
-- 4/21/2023 - Open-CD v1.0.0 is released in 1.x branch, based on OpenMMLab 2.0 ! PyTorch 2.0 is also supported ! Enjoy it !
-- 3/14/2023 - Open-CD is upgraded to v0.0.3. Semantic Change Detection (SCD) is supported !
-- 11/17/2022 - Open-CD is upgraded to v0.0.2, requiring a higher version of the MMSegmentation dependency.
-- 9/28/2022 - The code, pre-trained models and logs of [ChangerEx](https://github.com/likyoo/open-cd/tree/main/configs/changer) are available. :yum:
-- 9/20/2022 - Our paper [Changer: Feature Interaction is What You Need for Change Detection](https://arxiv.org/abs/2209.08290) is available!
-- 7/30/2022 - Open-CD is publicly available!
+## 基准和模型库
 
-## Benchmark and model zoo
+支持的工具箱：
 
-Supported toolboxes:
-
-- [x] [OpenMMLab Toolkits](https://github.com/open-mmlab)
+- [x] [OpenMMLab工具包](https://github.com/open-mmlab)
 - [x] [pytorch-image-models](https://github.com/rwightman/pytorch-image-models)
 - [ ] ...
 
-Supported change detection model:
-(_The code of some models are borrowed directly from their official repositories._)
+支持的变化检测模型：
+（_部分模型代码直接借鉴自其官方仓库_）
 
 - [x] [FC-EF (ICIP'2018)](configs/fcsn)
 - [x] [FC-Siam-diff (ICIP'2018)](configs/fcsn)
@@ -59,7 +58,7 @@ Supported change detection model:
 - [x] [MTKD (arXiv'2025)](configs/mtkd)
 - [ ] ...
 
-Supported datasets: | [Descriptions](https://github.com/wenhwu/awesome-remote-sensing-change-detection)
+支持的数据集：| [描述](https://github.com/wenhwu/awesome-remote-sensing-change-detection)
 - [x] [LEVIR-CD](https://justchenhao.github.io/LEVIR/)
 - [x] [WHU-CD](https://study.rsgis.whu.edu.cn/pages/download/building_dataset.html)
 - [x] [S2Looking](https://github.com/S2Looking/Dataset)
@@ -73,18 +72,18 @@ Supported datasets: | [Descriptions](https://github.com/wenhwu/awesome-remote-se
 - [x] [JL1-CD](https://github.com/circleLZY/MTKD-CD)
 - [ ] ...
 
-## Usage
+## 使用方法
 
-[Docs](https://github.com/open-mmlab/mmsegmentation/tree/master/docs)
+[文档](https://github.com/open-mmlab/mmsegmentation/tree/master/docs)
 
-Please refer to [get_started.md](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/get_started.md#installation) in mmseg.
+请参考mmseg中的[get_started.md](https://github.com/open-mmlab/mmsegmentation/blob/master/docs/en/get_started.md#installation)。
 
-A Colab tutorial is also provided. You may directly run on [Colab](https://colab.research.google.com/drive/1puZY5R8fwlL6um6pHbgbM1NTYZUXdK2J?usp=sharing). (thanks to [@Agustin](https://github.com/AgustinNormand) for this demo) [![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1puZY5R8fwlL6um6pHbgbM1NTYZUXdK2J?usp=sharing)
+也提供了Colab教程。您可以直接在[Colab](https://colab.research.google.com/drive/1puZY5R8fwlL6um6pHbgbM1NTYZUXdK2J?usp=sharing)上运行。（感谢[@Agustin](https://github.com/AgustinNormand)提供的演示）[![Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1puZY5R8fwlL6um6pHbgbM1NTYZUXdK2J?usp=sharing)
 
-#### Install
+#### 安装
 
 ```
-# Install OpenMMLab Toolkits as Python packages
+# 将OpenMMLab工具包作为Python包安装
 pip install -U openmim
 mim install mmengine
 mim install "mmcv>=2.0.0"
@@ -97,28 +96,27 @@ git clone https://github.com/likyoo/open-cd.git
 cd open-cd
 pip install -v -e .
 ```
-For more details, please see [here](https://github.com/likyoo/open-cd/blob/main/docs/install.md).
+更多详情，请参见[这里](https://github.com/likyoo/open-cd/blob/main/docs/install.md)。
 
-#### Train
+#### 训练
 ```
 python tools/train.py configs/changer/changer_ex_r18_512x512_40k_levircd.py --work-dir ./changer_r18_levir_workdir
 ```
 
-#### Test
+#### 测试
 ```
-# get .png results
+# 获取.png结果
 python tools/test.py configs/changer/changer_ex_r18_512x512_40k_levircd.py changer_r18_levir_workdir/latest.pth --show-dir tmp_infer
-# get metrics
+# 获取评估指标
 python tools/test.py configs/changer/changer_ex_r18_512x512_40k_levircd.py changer_r18_levir_workdir/latest.pth
 ```
 
-#### Infer
-Please refer [inference](https://github.com/likyoo/open-cd/blob/main/docs/inference.md) doc.
+#### 推理
+请参考[推理](https://github.com/likyoo/open-cd/blob/main/docs/inference.md)文档。
 
+## 引用
 
-## Citation
-
-If you find this project useful in your research, please cite:
+如果您在研究中使用了这个项目，请引用：
 
 ```bibtex
 @article{opencd,
@@ -129,7 +127,7 @@ If you find this project useful in your research, please cite:
   year={2024}
 }
 ```
-You might also consider citing:
+您也可以考虑引用：
 
 ```bibtex
 @ARTICLE{10438490,
@@ -154,6 +152,6 @@ You might also consider citing:
   doi={10.1109/TGRS.2023.3277496}}
 ```
 
-## License
+## 许可证
 
-Open-CD is released under the Apache 2.0 license.
+Open-CD 采用 Apache 2.0 许可证发布。
