@@ -1,15 +1,15 @@
 # SNUNet
 
-[SNUNet-CD: A Densely Connected Siamese Network for Change Detection of VHR Images](https://ieeexplore.ieee.org/document/9355573)
+[SNUNet-CD：用于高分辨率图像变化检测的密集连接孪生网络](https://ieeexplore.ieee.org/document/9355573)
 
-## Introduction
+## 简介
 
-[Official Repo](https://github.com/likyoo/Siam-NestedUNet)
+[官方仓库](https://github.com/likyoo/Siam-NestedUNet)
 
-[Code Snippet](https://github.com/likyoo/open-cd/blob/main/opencd/models/backbones/snunet.py)
+[代码片段](https://github.com/likyoo/open-cd/blob/main/opencd/models/backbones/snunet.py)
 
-## Abstract
-Change detection is an important task in remote sensing (RS) image analysis. It is widely used in natural disaster monitoring and assessment, land resource planning, and other fields. As a pixel-to-pixel prediction task, change detection is sensitive about the utilization of the original position information. Recent change detection methods always focus on the extraction of deep change semantic feature, but ignore the importance of shallow-layer information containing high-resolution and finegrained features, this often leads to the uncertainty of the pixels at the edge of the changed target and the determination miss of small targets. In this letter, we propose a densely connected siamese network for change detection, namely SNUNet-CD (the combination of Siamese network and NestedUNet). SNUNet-CD alleviates the loss of localization information in the deep layers of neural network through compact information transmission between encoder and decoder, and between decoder and decoder. In addition, Ensemble Channel Attention Module (ECAM) is proposed for deep supervision. Through ECAM, the most representative features of different semantic levels can be refined and used for the final classification. Experimental results show that our method improves greatly on many evaluation criteria and has a better tradeoff between accuracy and calculation amount than other state-of-the-art (SOTA) change detection methods.
+## 摘要
+变化检测是遥感图像分析中的一项重要任务。它广泛应用于自然灾害监测和评估、土地资源规划和其他领域。作为一种像素到像素的预测任务，变化检测对原始位置信息的利用非常敏感。最近的变化检测方法总是专注于深层变化语义特征的提取，但忽略了包含高分辨率和细粒度特征的浅层信息的重要性，这往往导致变化目标边缘像素的不确定性和小目标的判断遗漏。在本文中，我们提出了一种用于变化检测的密集连接孪生网络，即SNUNet-CD（孪生网络和NestedUNet的组合）。SNUNet-CD通过编码器和解码器之间以及解码器和解码器之间的紧凑信息传输，减轻了神经网络深层中定位信息的丢失。此外，我们还提出了集成通道注意力模块（ECAM）用于深度监督。通过ECAM，可以提炼不同语义层次的最具代表性特征并用于最终分类。实验结果表明，我们的方法在许多评估标准上都有很大改进，并且在准确性和计算量之间有着比其他最先进的变化检测方法更好的权衡。
 
 <!-- [IMAGE] -->
 
@@ -29,22 +29,22 @@ Change detection is an important task in remote sensing (RS) image analysis. It 
   doi={10.1109/LGRS.2021.3056416}}
 ```
 
-## Results and models
+## 结果和模型
 
 ### LEVIR-CD
 
-| Method | base_channel | Crop Size | Lr schd | Mem (GB) | Precision | Recall | F1-Score |  IoU  |                            config                            | download |
+| 方法 | 基础通道数 | 裁剪尺寸 | 学习率调度 | 内存 (GB) | 精确率 | 召回率 | F1分数 |  IoU  |                            配置                            | 下载 |
 | :----: | :----------: | :-------: | :-----: | :------: | :-------: | :----: | :------: | :---: | :----------------------------------------------------------: | :------: |
-| SNUNet |      16      |  256x256  |  40000  |    -     |   92.70   | 90.04  |  91.35   | 84.08 | [config](https://github.com/likyoo/open-cd/blob/main/configs/snunet/snunet_c16_256x256_40k_levircd.py) |          |
+| SNUNet |      16      |  256x256  |  40000  |    -     |   92.70   | 90.04  |  91.35   | 84.08 | [配置](https://github.com/likyoo/open-cd/blob/main/configs/snunet/snunet_c16_256x256_40k_levircd.py) |          |
 
 
 ### SVCD
 
-| Method | base_channel | Crop Size | Lr schd | Mem (GB) | Precision | Recall | F1-Score |  IoU  |                            config                            | download |
+| 方法 | 基础通道数 | 裁剪尺寸 | 学习率调度 | 内存 (GB) | 精确率 | 召回率 | F1分数 |  IoU  |                            配置                            | 下载 |
 | :----: | :----------: | :-------: | :-----: | :------: | :-------: | :----: | :------: | :---: | :----------------------------------------------------------: | :------: |
-| SNUNet |      16      |  256x256  |  120000  |    -     |   94.69   | 91.90  |  93.27   | 87.40 | [config](https://github.com/likyoo/open-cd/blob/main/configs/snunet/snunet_c16_256x256_120k_svcd.py) |          |
+| SNUNet |      16      |  256x256  |  120000  |    -     |   94.69   | 91.90  |  93.27   | 87.40 | [配置](https://github.com/likyoo/open-cd/blob/main/configs/snunet/snunet_c16_256x256_120k_svcd.py) |          |
 
 
-- All metrics are based on the category "change".
-- All scores are computed on the test set.
-- 120000 iters ~ 100 epochs in SVCD Dataset
+- 所有指标均基于"变化"类别。
+- 所有得分均在测试集上计算。
+- 120000次迭代 ~ SVCD数据集中的100个周期
