@@ -7,6 +7,7 @@ import os.path as osp
 from mmengine.config import Config, DictAction
 from mmengine.logging import print_log
 from mmengine.runner import Runner
+from mmengine.registry import init_default_scope
 
 from opencd.registry import RUNNERS
 
@@ -52,6 +53,9 @@ def parse_args():
 
 
 def main():
+    # 初始化OpenCD作用域，必须在使用任何opencd模块之前调用
+    init_default_scope('opencd')
+    
     args = parse_args()
 
     # load config

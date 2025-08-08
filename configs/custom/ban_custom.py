@@ -3,10 +3,53 @@ _base_ = [
     './custom_dataset_config.py']
 
 crop_size = (512, 512)
+checkpoint = 'https://download.openmmlab.com/mmsegmentation/v0.5/pretrain/segformer/mit_b0_20220624-7e0fe6dd.pth'
+
 model = dict(
-    decode_head=dict(num_classes=2),
-    # test_cfg=dict(mode='slide', crop_size=crop_size, stride=(crop_size[0]//2, crop_size[1]//2)),
-)
+    # BAN预训练权重设置：
+    # - 设置为None：从头开始训练（当前设置）
+    # - 如需使用预训练CLIP权重，请从以下地址下载：
+    #   * huggingface: https://huggingface.co/likyoo/BAN/tree/main/pretrain
+    #   * 百度网盘: https://pan.baidu.com/s/1RkIGsOB3XBi7Oi6mKIpZ2w?pwd=kfp9
+    #   然后设置: pretrained='path/to/clip_vit-base-patch16-224_3rdparty-d08f8887.pth'
+    pretrained=None,
+    asymetric_input=True,
+    encoder_resolution=dict(
+        size=(224, 224),
+        mode='bilinear'),
+    image_encoder=dict(
+        frozen_exclude=[]),
+    decode_head=dict(
+        type='BitemporalAdapterHead',
+        ban_cfg=dict(
+            clip_channels=768,
+            fusion_index=[1, 2, 3],
+            side_enc_cfg=dict(
+                type='mmseg.MixVisionTransformer',
+                init_cfg=dict(
+                    type='Pretrained', checkpoint=checkpoint),
+                in_channels=3,
+                embed_dims=32,
+                num_stages=4,
+                num_layers=[2, 2, 2, 2],
+                num_heads=[1, 2, 5, 8],
+                patch_sizes=[7, 3, 3, 3],
+                sr_ratios=[8, 4, 2, 1],
+                out_indices=(0, 1, 2, 3),
+                mlp_ratio=4,
+                qkv_bias=True,
+                drop_rate=0.0,
+                attn_drop_rate=0.0,
+                drop_path_rate=0.1)),
+        ban_dec_cfg=dict(
+            type='BAN_MLPDecoder',
+            in_channels=[32, 64, 160, 256],
+            channels=128,
+            dropout_ratio=0.1,
+            num_classes=2,
+            norm_cfg=dict(type='SyncBN', requires_grad=True),
+            align_corners=False)),
+    test_cfg=dict(mode='slide', crop_size=crop_size, stride=(crop_size[0]//2, crop_size[1]//2)))
 
 train_pipeline = [
     dict(type='MultiImgLoadImageFromFile'),
