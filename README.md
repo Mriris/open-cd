@@ -14,6 +14,7 @@
 Open-CD是一个基于一系列开源通用视觉任务工具的开源变化检测工具箱。
 
 ## 新闻
+- 7/25/2025 - Open-CD Technical Report is accepted by ACMMM 2025. 🎉
 - 2025/4/11 - 支持[MTKD](https://github.com/circleLZY/MTKD-CD)方法和[JL1-CD](https://github.com/circleLZY/MTKD-CD)数据集。Open-CD技术报告更新至v1.1版本。
 - 2024/7/23 - **Open-CD技术报告v1.0已在[arXiv](https://arxiv.org/abs/2407.15317)发布，感谢所有贡献者！欢迎加入我们！** 💥💥💥
 - 2024/6/29 - 支持[ChangeStar](https://github.com/Z-Zheng/ChangeStar)和[FarSeg](https://github.com/Z-Zheng/FarSeg)。
@@ -66,7 +67,7 @@ Open-CD是一个基于一系列开源通用视觉任务工具的开源变化检�
 - [x] [DSIFN](https://github.com/GeoZcx/A-deeply-supervised-image-fusion-network-for-change-detection-in-remote-sensing-images/tree/master/dataset)
 - [x] [CLCD](https://github.com/liumency/CropLand-CD)
 - [x] [RSIPAC](https://engine.piesat.cn/ai/autolearning/index.html#/dataset/detail?key=8f6c7645-e60f-42ce-9af3-2c66e95cfa27)
-- [x] [SECOND](http://www.captain-whu.com/PROJECT/)
+- [x] [SECOND](https://captain-whu.github.io/SCD/)
 - [x] [Landsat](https://figshare.com/articles/figure/Landsat-SCD_dataset_zip/19946135/1)
 - [x] [BANDON](https://github.com/fitzpchao/BANDON)
 - [x] [JL1-CD](https://github.com/circleLZY/MTKD-CD)
@@ -122,7 +123,7 @@ python tools/test.py configs/changer/changer_ex_r18_512x512_40k_levircd.py chang
 @article{opencd,
   title   = {{Open-CD}: A Comprehensive Toolbox for Change Detection},
   author  = {Li, Kaiyu and Jiang, Jiawei and Codegoni, Andrea and Han, Chengxi and Deng, Yupeng and Chen, Keyan and Zheng, Zhuo and
-             Chen, Hao and Zou, Zhengxia and Shi, Zhenwei and Fang, Sheng and Meng, Deyu and Wang, Zhi and Cao, Xiangyong},
+             Chen, Hao and Liu, Ziyuan and Gu, Yuantao and Zou, Zhengxia and Shi, Zhenwei and Fang, Sheng and Meng, Deyu and Wang, Zhi and Cao, Xiangyong},
   journal= {arXiv preprint arXiv:2407.15317},
   year={2024}
 }
