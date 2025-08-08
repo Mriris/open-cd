@@ -1,20 +1,15 @@
 _base_ = [
-    '../_base_/models/snunet_c16.py', 
-    './custom_dataset_config.py']
+    '../_base_/models/tinycd_v2.py',
+    './custom_dataset_config.py'
+]
 
-crop_size = (512, 512)
-model = dict(
-    decode_head=dict(num_classes=2),
-    # test_cfg=dict(mode='slide', crop_size=crop_size, stride=(crop_size[0]//2, crop_size[1]//2)),
-)
+crop_size = (256, 256)
 
 train_pipeline = [
     dict(type='MultiImgLoadImageFromFile'),
     dict(type='MultiImgLoadAnnotations'),
-    dict(type='MultiImgRandomRotate', prob=0.5, degree=180),
+    dict(type='MultiImgRandomRotFlip', rotate_prob=0.5, flip_prob=0.5, degree=(-20, 20)),
     dict(type='MultiImgRandomCrop', crop_size=crop_size, cat_max_ratio=0.75),
-    dict(type='MultiImgRandomFlip', prob=0.5, direction='horizontal'),
-    dict(type='MultiImgRandomFlip', prob=0.5, direction='vertical'),
     dict(type='MultiImgExchangeTime', prob=0.5),
     dict(
         type='MultiImgPhotoMetricDistortion',
@@ -30,9 +25,8 @@ train_dataloader = dict(
 
 # 优化器
 optimizer = dict(
-    type='AdamW', lr=0.001, weight_decay=0.0001)
+    type='AdamW', lr=0.003, betas=(0.9, 0.999), weight_decay=0.05)
 optim_wrapper = dict(
     _delete_=True,
     type='OptimWrapper',
-    optimizer=optimizer,
-    clip_grad=dict(max_norm=1, norm_type=2)) 
+    optimizer=optimizer) 
