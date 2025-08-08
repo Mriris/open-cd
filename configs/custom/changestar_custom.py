@@ -4,11 +4,6 @@ _base_ = [
 
 crop_size = (512, 512)
 model = dict(
-    backbone=dict(
-        interaction_cfg=(
-            dict(type='SpatialExchange', p=1/2),
-        )
-    ),
     decode_head=dict(num_classes=2),
     # test_cfg=dict(mode='slide', crop_size=crop_size, stride=(crop_size[0]//2, crop_size[1]//2)),
 )

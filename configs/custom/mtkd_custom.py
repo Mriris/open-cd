@@ -5,21 +5,23 @@ _base_ = [
 
 crop_size = (512, 512)
 
-# 预训练模型检查点（需要在实际使用时设置）
-checkpoint_student = None
-checkpoint_teacher_l = None
-checkpoint_teacher_m = None
-checkpoint_teacher_s = None
+# MTKD多教师知识蒸馏框架需要按照以下三个步骤使用：
+# 步骤1: 训练原始模型（得到checkpoint_student）
+# 步骤2: 根据CAR训练教师模型（得到checkpoint_teacher_l, checkpoint_teacher_m, checkpoint_teacher_s）
+# 步骤3: 知识蒸馏训练（本配置文件用于此步骤）
+#
+# 预训练模型检查点路径（在步骤3时需要设置为前两步训练得到的模型权重）：
+# checkpoint_student = 'work_dirs/initial/latest.pth'      # 来自步骤1
+# checkpoint_teacher_l = 'work_dirs/large/latest.pth'      # 来自步骤2
+# checkpoint_teacher_m = 'work_dirs/medium/latest.pth'     # 来自步骤2  
+# checkpoint_teacher_s = 'work_dirs/small/latest.pth'      # 来自步骤2
 
 model = dict(
-    # student
-    init_cfg=dict(type='Pretrained', checkpoint=checkpoint_student),
-    # teacher large    
-    init_cfg_t_l = dict(type='Pretrained', checkpoint=checkpoint_teacher_l),
-    # teacher medium    
-    init_cfg_t_m = dict(type='Pretrained', checkpoint=checkpoint_teacher_m),
-    # teacher small    
-    init_cfg_t_s = dict(type='Pretrained', checkpoint=checkpoint_teacher_s),
+    # 注释掉预训练权重加载，如需使用请设置上面的检查点路径并取消注释
+    # init_cfg=dict(type='Pretrained', checkpoint=checkpoint_student),
+    # init_cfg_t_l = dict(type='Pretrained', checkpoint=checkpoint_teacher_l),
+    # init_cfg_t_m = dict(type='Pretrained', checkpoint=checkpoint_teacher_m),
+    # init_cfg_t_s = dict(type='Pretrained', checkpoint=checkpoint_teacher_s),
     
     backbone=dict(
         interaction_cfg=(

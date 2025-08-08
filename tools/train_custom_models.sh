@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# 配置模型训练开关（true代表训练，false代表不训练）
+# 配置模型训练开关
 TRAIN_CHANGER=true
 TRAIN_SNUNET=true
 TRAIN_BIT=true
@@ -13,7 +13,6 @@ TRAIN_CHANGEFORMER=true
 TRAIN_LIGHTCDNET=true
 TRAIN_BAN=true
 TRAIN_HANET=true
-# 新增的6个模型
 TRAIN_FC_SIAM_DIFF=true
 TRAIN_FC_SIAM_CONC=true
 TRAIN_TINYCD_V2=true
@@ -94,6 +93,11 @@ fi
 # 训练HANet模型
 if [ "$TRAIN_HANET" = true ]; then
   echo "开始训练HANet模型..."
+  # 设置PyTorch内存管理环境变量
+  export PYTORCH_CUDA_ALLOC_CONF=expandable_segments:True
+  # 清理GPU缓存
+  python -c "import torch; torch.cuda.empty_cache()" 2>/dev/null || true
+  # 开始训练
   python tools/train.py configs/custom/hanet_custom.py --work-dir $WORK_DIR/hanet
 fi
 
