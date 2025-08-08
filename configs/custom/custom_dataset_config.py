@@ -110,13 +110,13 @@ param_scheduler = [
         type='PolyLR',
         power=1.0,
         begin=1000,
-        end=40000,
+        end=100000,
         eta_min=0.0,
         by_epoch=False,
     )
 ]
-# 训练40k次迭代的计划
-train_cfg = dict(type='IterBasedTrainLoop', max_iters=40000, val_interval=4000)
+# 训练100k次迭代的计划
+train_cfg = dict(type='IterBasedTrainLoop', max_iters=100000, val_interval=4000)
 val_cfg = dict(type='ValLoop')
 test_cfg = dict(type='TestLoop')
 default_hooks = dict(

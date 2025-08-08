@@ -27,10 +27,17 @@ train_pipeline = [
 train_dataloader = dict(
     dataset=dict(pipeline=train_pipeline))
 
-# 优化器
-optimizer = dict(
-    type='SGD', lr=0.01, momentum=0.9, weight_decay=0.0005)
+# 优化器 - 与原始BAN配置保持一致
 optim_wrapper = dict(
     _delete_=True,
-    type='OptimWrapper',
-    optimizer=optimizer) 
+    type='AmpOptimWrapper',
+    optimizer=dict(
+        type='AdamW', lr=0.0001, betas=(0.9, 0.999), weight_decay=0.0001),
+    paramwise_cfg=dict(
+        custom_keys={
+            'img_encoder': dict(lr_mult=0.1, decay_mult=1.0),
+            'norm': dict(decay_mult=0.),
+            'mask_decoder': dict(lr_mult=10.)
+        }),
+    loss_scale='dynamic',
+    clip_grad=dict(max_norm=0.01, norm_type=2)) 
