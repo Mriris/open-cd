@@ -1,4 +1,8 @@
 #!/bin/bash
+# GPU 设备选择（默认使用 2 号卡，可被环境变量 GPU_DEVICES 覆盖）
+GPU_DEVICES="${GPU_DEVICES:-2}"
+export CUDA_VISIBLE_DEVICES="${GPU_DEVICES}"
+echo "已设置 CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}"
 
 # 配置模型训练开关
 TRAIN_CHANGER=true
@@ -21,7 +25,7 @@ TRAIN_TTP=true
 TRAIN_MTKD=true
 
 # 设置模型训练的工作目录
-WORK_DIR="./work_dirs/custom3"
+WORK_DIR="./work_dirs/custom12"
 mkdir -p $WORK_DIR
 
 # 训练Changer模型

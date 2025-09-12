@@ -1,6 +1,6 @@
 # 数据集设置
 dataset_type = 'LEVIR_CD_Dataset'  # 使用LEVIR_CD_Dataset作为基础数据集类型
-data_root = '/data/jingwei/yantingxuan/Datasets/CityCN/Split8'  # 数据根目录
+data_root = '/data/jingwei/yantingxuan/Datasets/CityCN/Split24'  # 数据根目录
 
 crop_size = (512, 512)
 train_pipeline = [
