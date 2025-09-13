@@ -1,5 +1,6 @@
 from .bit_head import BITHead
 from .changer import Changer
+from .gold import GOLD
 from .general_scd_head import GeneralSCDHead
 from .identity_head import DSIdentityHead, IdentityHead
 from .multi_head import MultiHeadDecoder
@@ -12,7 +13,7 @@ from .ds_fpn_head import DS_FPNHead
 from .changerstar_head import ChangeStarHead
 from .farseg_head import FarSegHead
 
-__all__ = ['BITHead', 'Changer', 'IdentityHead', 'DSIdentityHead', 'TinyHead',
+__all__ = ['BITHead', 'Changer', 'GOLD', 'IdentityHead', 'DSIdentityHead', 'TinyHead',
            'STAHead', 'MultiHeadDecoder', 'GeneralSCDHead', 'BitemporalAdapterHead',
            'BAN_MLPDecoder', 'BAN_BITHead', 'MLPSegHead', 'DS_FPNHead', 
            'ChangeStarHead', 'FarSegHead']

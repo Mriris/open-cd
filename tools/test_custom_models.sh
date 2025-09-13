@@ -1,6 +1,7 @@
 #!/bin/bash
 
 # 配置模型测试开关（true代表测试，false代表不测试）
+TEST_GOLD=true
 TEST_CHANGER=true
 TEST_SNUNET=true
 TEST_BIT=true
@@ -20,6 +21,17 @@ WORK_DIR="./work_dirs/custom2"
 # 创建结果目录
 RESULT_DIR="./results/custom3"
 mkdir -p $RESULT_DIR
+
+# 测试GOLD模型
+if [ "$TEST_GOLD" = true ]; then
+  # 测试GOLD模型性能指标
+  echo "测试GOLD模型性能..."
+  python tools/test.py configs/custom/gold_custom.py $WORK_DIR/gold/latest.pth
+
+  # 测试GOLD模型并生成可视化结果
+  echo "生成GOLD模型预测结果..."
+  python tools/test.py configs/custom/gold_custom.py $WORK_DIR/gold/latest.pth --show-dir $RESULT_DIR/gold
+fi
 
 # 测试Changer模型
 if [ "$TEST_CHANGER" = true ]; then

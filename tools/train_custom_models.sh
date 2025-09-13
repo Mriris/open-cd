@@ -5,33 +5,54 @@ export CUDA_VISIBLE_DEVICES="${GPU_DEVICES}"
 echo "已设置 CUDA_VISIBLE_DEVICES=${CUDA_VISIBLE_DEVICES}"
 
 # 配置模型训练开关
-TRAIN_CHANGER=true
-TRAIN_SNUNET=true
-TRAIN_BIT=true
-TRAIN_FCEF=true
-TRAIN_STANET=true
-TRAIN_TINYCD=true
-TRAIN_CHANGESTAR=true
-TRAIN_IFN=true
-TRAIN_CHANGEFORMER=true
-TRAIN_LIGHTCDNET=true
-TRAIN_BAN=true
-TRAIN_HANET=true
-TRAIN_FC_SIAM_DIFF=true
-TRAIN_FC_SIAM_CONC=true
-TRAIN_TINYCD_V2=true
-TRAIN_CGNET=true
-TRAIN_TTP=true
-TRAIN_MTKD=true
+TRAIN_GOLD=true
+TRAIN_GOLD_AC=false
+TRAIN_CHANGER=false
+TRAIN_CHANGER_AC=false
+TRAIN_SNUNET=false
+TRAIN_BIT=false
+TRAIN_FCEF=false
+TRAIN_STANET=false
+TRAIN_TINYCD=false
+TRAIN_CHANGESTAR=false
+TRAIN_IFN=false
+TRAIN_CHANGEFORMER=false
+TRAIN_LIGHTCDNET=false
+TRAIN_BAN=false
+TRAIN_HANET=false
+TRAIN_FC_SIAM_DIFF=false
+TRAIN_FC_SIAM_CONC=false
+TRAIN_TINYCD_V2=false
+TRAIN_CGNET=false
+TRAIN_TTP=false
+TRAIN_MTKD=false
 
 # 设置模型训练的工作目录
-WORK_DIR="./work_dirs/custom12"
+WORK_DIR="./work_dirs/test4"
 mkdir -p $WORK_DIR
+
+# 训练GOLD模型
+if [ "$TRAIN_GOLD" = true ]; then
+  echo "开始训练GOLD模型..."
+  python tools/train.py configs/custom/gold_custom.py --work-dir $WORK_DIR/gold
+fi
+
+# 训练GOLD（AC 数据集）
+if [ "$TRAIN_GOLD_AC" = true ]; then
+  echo "开始训练GOLD（AC 数据集）..."
+  python tools/train.py configs/custom/gold_custom_ac.py --work-dir $WORK_DIR/gold_ac
+fi
 
 # 训练Changer模型
 if [ "$TRAIN_CHANGER" = true ]; then
   echo "开始训练Changer模型..."
   python tools/train.py configs/custom/changer_custom.py --work-dir $WORK_DIR/changer
+fi
+
+# 训练Changer（AC 数据集）
+if [ "$TRAIN_CHANGER_AC" = true ]; then
+  echo "开始训练Changer（AC 数据集）..."
+  python tools/train.py configs/custom/changer_custom_ac.py --work-dir $WORK_DIR/changer_ac
 fi
 
 # 训练SNUNet模型
